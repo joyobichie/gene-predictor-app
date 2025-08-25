@@ -1,0 +1,34 @@
+# Git and Docker files
+.git
+.gitignore
+.dockerignore
+Dockerfile
+
+# Node dependencies - These will be installed inside the container
+node_modules/
+
+# Production build folder - This should be generated inside the container
+# using a multi-stage build. If you build locally first and then copy,
+# you must REMOVE this line.
+build/
+dist/
+
+# IDE and editor configuration
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+
+# Secrets - NEVER include in the image
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs and reports
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+coverage/
