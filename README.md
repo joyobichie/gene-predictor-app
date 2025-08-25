@@ -2,8 +2,7 @@
 
 A full-stack web application that predicts the potential genetic traits of an offspring based on the phenotypes of two parents. This project is fully containerized with Docker and ready for deployment on Kubernetes.
 
-![Gene Predictor Screenshot](./path-to-your-screenshot.png)
-*(Replace the path above with a real screenshot of your app!)*
+<img width="600" alt="Image" src="https://github.com/user-attachments/assets/e96fbee7-f948-4e9f-a84e-d34c1836437c" />
 
 ---
 
@@ -129,3 +128,16 @@ These instructions explain how to deploy the application to a Kubernetes cluster
 ---
 
 ## 📂 Project Structure
+.
+├── backend/ # Django backend source code
+│ ├── Dockerfile
+│ └── ...
+├── deployment/ # Kubernetes manifest files
+│ ├── backend.yml
+│ └── frontend.yml
+├── frontend/ # React frontend source code
+│ ├── Dockerfile
+│ └── ...
+├── .gitignore
+├── docker-compose.yml # For local development orchestration
+└── README.md # This file
