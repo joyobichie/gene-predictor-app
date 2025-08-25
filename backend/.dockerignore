@@ -1,0 +1,37 @@
+# Git and Docker files
+.git
+.gitignore
+.dockerignore
+Dockerfile
+
+# Python virtual environment
+.venv/
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django specific
+db.sqlite3
+/media/
+/static_root/ # Or staticfiles/, depending on your config. Let Docker generate this.
+
+# IDE and editor configuration
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Secrets - NEVER include in the image
+.env
+*.env
+
+# Logs and temp files
+*.log
+local_settings.py

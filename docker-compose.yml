@@ -1,0 +1,21 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app  # Sync local code for live reloading
+    env_file:
+      - ./backend/.env  # Load environment variables from a file
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app       # Sync our code from the host
+      - /app/node_modules     # But keep the container's node_modules separate
+    env_file:
+      - ./frontend/.env # Load environment variables for the frontend
+    depends_on:
+      - backend

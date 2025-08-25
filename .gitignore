@@ -1,0 +1,59 @@
+# ==================================
+# === GENERAL & EDITOR CONFIGS ===
+# ==================================
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.sln
+
+# ===============================
+# === DJANGO BACKEND (backend/) ===
+# ===============================
+# Python virtual environment
+# This will ignore your 'env' folder inside 'backend'
+backend/env/
+backend/venv/
+backend/.venv/
+
+# Python byte-compiled / optimized files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django's SQLite database
+backend/db.sqlite3
+backend/db.sqlite3-journal
+
+# User-uploaded media files (best practice)
+backend/media/
+
+# Local environment variables file (for secrets)
+backend/.env
+
+# ============================
+# === REACT FRONTEND (frontend/) ===
+# ============================
+# Dependency directories
+frontend/node_modules/
+
+# Build output from Vite
+frontend/dist/
+frontend/dist-ssr/
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# Local environment variables & config for Vite
+frontend/.env.local
+frontend/.env.*.local
+frontend/*.local

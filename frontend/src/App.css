@@ -1,0 +1,159 @@
+:root {
+  --accent-color: #34495e;
+  --accent-hover-color: #2c3e50;
+  --card-background-rgba: linear-gradient(135deg, rgba(253, 247, 250, 0.2) 0%, rgba(253, 247, 250, 0.1) 100%);
+  --text-color: #3d342a;
+  --border-color: rgba(255, 255, 255, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --progress-bar-color: #23a6d5;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  color: var(--text-color);
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: moveGradient 20s ease infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box; 
+}
+
+.App { text-align: center; width: 100%; max-width: 650px; }
+.App-header { padding-bottom: 20px; }
+.App-header h1 { font-size: 2.8rem; font-weight: 700; color: var(--text-color); }
+.App-header p { font-size: 1.1rem; margin: 0 auto; color: #5c554e; }
+main { padding: 0; width: 100%; }
+form { display: flex; flex-direction: column; align-items: center; gap: 25px; }
+
+
+/* === GLOBAL PROGRESS BAR === */
+.progress-container {
+  width: 100%;
+  background-color: rgba(0,0,0,0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  height: 25px;
+}
+.progress-bar {
+  height: 100%;
+  background-color: var(--progress-bar-color);
+  border-radius: 10px;
+  transition: width 0.3s ease-in-out;
+}
+.progress-label {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+
+/* === SIDE-BY-SIDE TRAIT CARD === */
+.trait-card-container {
+  background: var(--card-background-rgba);
+  border-radius: 12px;
+  padding: 25px 35px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  border: 1px solid rgba(255,255,255,0.5);
+  width: 100%;
+  box-sizing: border-box;
+}
+.trait-title {
+  margin-top: 0;
+  color: var(--accent-color);
+  text-transform: capitalize;
+  font-size: 1.8rem;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+.selectors-wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px 0;
+  gap: 20px;
+}
+.parent-selector-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+.parent-selector-group h3 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-color);
+}
+.trait-selector select {
+  width: 100%;
+  min-width: 200px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  font-size: 1.1rem;
+}
+
+
+/* === UNIFIED WIZARD NAVIGATION === */
+.wizard-navigation {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.wizard-navigation button {
+  padding: 14px 0;
+  width: 48%;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.wizard-navigation button:first-child {
+  background-color: #6c757d;
+  color: white;
+}
+.wizard-navigation button:last-child {
+  background-color: var(--accent-color);
+  color: white;
+}
+.wizard-navigation button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.wizard-navigation button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* --- Other Styles (Results, Reset) --- */
+.results-container { background: var(--card-background-rgba); border-radius: 12px; padding: 25px; margin: 30px auto 0 auto; max-width: 700px; box-shadow: 0 5px 15px var(--shadow-color); text-align: left; border: 1px solid rgba(255,255,255,0.5); }
+.reset-btn { margin-top: 25px; padding: 14px 40px; font-size: 1.1rem; font-weight: bold; color: white; background-color: var(--accent-color); border: none; border-radius: 8px; cursor: pointer; transition: all 0.2s ease-in-out; }
+
+/* Responsive styles for smaller screens */
+@media (max-width: 550px) {
+  .selectors-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .trait-selector select {
+    min-width: unset;
+  }
+}
