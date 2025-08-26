@@ -78,7 +78,7 @@ function App() {
     try {
       // *** THIS IS THE CORRECTED LINE ***
       // We use a relative path so the Vite proxy can forward the request.
-      const response = await fetch('/api/predict_traits/', {
+      const response = await fetch("https://gene-predictor-backend.onrender.com/predict_traits/", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ parent1_traits: parent1Traits, parent2_traits: parent2Traits }),
