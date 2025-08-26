@@ -4,7 +4,6 @@ import ResultsDisplay from './components/ResultsDisplay.jsx';
 import './App.css';
 
 const TRAIT_OPTIONS = {
-  // ... (Your trait options are perfect, no changes needed)
   dimples: ['Dimples', 'No Dimples'],
   earlobes: ['Free Earlobes', 'Attached Earlobes'],
   nose_shape: ['Roman Nose', 'Straight Nose'],
@@ -63,10 +62,10 @@ function App() {
     setError(null);
   };
 
+  // --- START OF CORRECTED CODE ---
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // Check if any traits were selected
     if (Object.keys(parent1Traits).length === 0 && Object.keys(parent2Traits).length === 0) {
       setError("Please select at least one trait for one parent before predicting.");
       return; 
@@ -76,22 +75,35 @@ function App() {
     setError(null);
     setResults(null);
     try {
-      // *** THIS IS THE CORRECTED LINE ***
-      // We use a relative path so the Vite proxy can forward the request.
-      const response = await fetch("https://gene-predictor-backend.onrender.com/predict_traits/", {
+      // 1. Use the FULL and CORRECT URL we discovered.
+      const response = await fetch("https://gene-predictor-backend.onrender.com/api/predict_traits/", {
+        // 2. Specify the METHOD as 'POST' to send data.
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        // 3. Set HEADERS to tell the server we are sending JSON data.
+        headers: { 
+          'Content-Type': 'application/json' 
+        },
+        // 4. Provide the BODY with the parent data, converted to a string.
         body: JSON.stringify({ parent1_traits: parent1Traits, parent2_traits: parent2Traits }),
       });
-      if (!response.ok) throw new Error(`API request failed: ${response.statusText}`);
+
+      if (!response.ok) {
+        // Try to get a more detailed error from the backend response
+        const errorData = await response.json().catch(() => null); // a .catch() here prevents another error if response isn't JSON
+        const errorMessage = errorData?.error || `API request failed: ${response.statusText}`;
+        throw new Error(errorMessage);
+      }
+      
       const data = await response.json();
       setResults(data);
+
     } catch (err) {
-      setError(err.message);
+      setError(`Prediction failed: ${err.message}`);
     } finally {
       setIsLoading(false);
     }
   };
+  // --- END OF CORRECTED CODE ---
   
   const currentTraitKey = ALL_TRAIT_KEYS[currentTraitIndex];
   const progressPercentage = ((currentTraitIndex + 1) / TOTAL_TRAITS) * 100;
