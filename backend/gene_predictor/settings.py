@@ -130,5 +130,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = [
+    "https://joyobichie.github.io",
     "http://localhost:5173", # The default port for React's server
+]
+
+CORS_ALLOW_HEADERS = [
+    "content-type",
 ]
